@@ -1,19 +1,22 @@
-export default class Character {
-  name: string;
-  maxHealth: number;
-  currentHealth: number;
-  attack: number;
+export default abstract class Character {
+  name!: string;
+  readonly class!: string;
+  readonly maxHealth!: number;
+  currentHealth!: number;
+  attack!: number;
   target: string | undefined;
-  speed: number;
-  isActing: boolean;
+  readonly speed!: number;
+  isActing: boolean = false;
 
-  constructor(name: string, health: number, attack: number, speed: number) {
+  constructor(name: string) {
     this.name = name;
-    this.maxHealth = health;
-    this.currentHealth = health;
-    this.attack = attack;
-    this.target = undefined;
-    this.speed = speed;
-    this.isActing = false;
+  }
+
+  takeDamage(damage: number) {
+    return this.currentHealth - damage;
+  }
+
+  takeHealing(healing: number) {
+    return this.currentHealth + healing;
   }
 }

@@ -1,3 +1,5 @@
+import Warrior from './classes/heroes/warrior';
+
 const App = () => {
   return (
     <>
